@@ -10,11 +10,11 @@
   </div>
 </div>
 
-<div class="row">
+<div *ngIf="visitor" class="row">
   <div>
     <h2>Create Posts: </h2>
     Title: <input type="text" id="title" [(ngModel)]="post.title">
     Content: <input type="text" id="content" [(ngModel)]="post.content">
-    <input type="button" value="Submit">
+    <input type="button" value="Submit" (click)="createPost()">
   </div>
 </div>

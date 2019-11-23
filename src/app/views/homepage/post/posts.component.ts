@@ -29,7 +29,11 @@ export class PostsComponent implements OnInit {
   }
 
   createPost() {
-
+    this.postService.createPost(this.post).subscribe(
+      response => {
+        console.log(response);
+      }
+    )
   }
   sendMessage() {
     this.loginEvent.emit(this.visitor?true:false)
