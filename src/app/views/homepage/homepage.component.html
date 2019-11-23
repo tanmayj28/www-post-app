@@ -1,1 +1,3 @@
 <div>Helllo Worlds!!! </div>
+<Post (messageEvent)="recieveLoginCheck($event)" [visitor]="visitor"></Post>
+<Visitor *ngIf="logginRequired" (messageEvent)="recieveVisitor($event)"></Visitor>

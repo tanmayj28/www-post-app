@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../../services/post.service';
+import { PostService } from '../../services';
+import { PostsComponent } from './post/posts.component';
+import { UpvotesComponent } from './upvote/upvotes.component';
+import { VisitorsComponent } from './visitor/visitors.component';
+import { Visitor } from "../../model/visitor";
 
 @Component({
   selector: 'home-page-selector',
@@ -10,8 +14,21 @@ export class HomepageComponent implements OnInit {
   constructor(private postService: PostService) {
     
   }
+  logginRequired=false;
+  visitor:Visitor;
 
   ngOnInit(): void {
 
+  }
+
+  recieveVistor($event:Visitor){
+    this.visitor=$event;
+    this.logginRequired=false;
+  }
+
+  recieveLoginCheck($event){
+    if(!$event) {
+      this.logginRequired=true;
+    }
   }
 }

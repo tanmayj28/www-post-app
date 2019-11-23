@@ -1,3 +1,3 @@
-export class Visistor {
+export class Visitor {
   name: string;
 }

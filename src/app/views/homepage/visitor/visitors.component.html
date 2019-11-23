@@ -1,0 +1,21 @@
+<div>Visitors</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <li *ngFor="let item of visitorList; let i = index">
+      <div class="card">
+        <h2>{{item.id}}</h2>
+        <h5>{{item.created_at | date: 'yyyy-MMM-dd'}}</h5>
+        <p>{{item.name}}</p>
+      </div>
+    </li>
+  </div>
+</div>
+
+<div class="row">
+  <div>
+    <h2>Create Visitor: </h2>
+    Name: <input type="text" id="title">
+    <input type="button" value="Submit">
+  </div>
+</div>
