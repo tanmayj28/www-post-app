@@ -1,21 +1,18 @@
-<div>Visitors</div>
-
-<div class="row">
-  <div class="leftcolumn">
-    <li *ngFor="let item of visitorList; let i = index">
-      <div class="card">
-        <h2>{{item.id}}</h2>
-        <h5>{{item.created_at | date: 'yyyy-MMM-dd'}}</h5>
-        <p>{{item.name}}</p>
-      </div>
-    </li>
+<div class="row" *ngIf=false>
+  <div>
+    <h2>Create Visitor: </h2>
+    Name: <input type="text" id="name" [(ngModel)]="visitor.name">
+    <input type="button" value="Submit" (click)="createVisitor()">
   </div>
 </div>
 
-<div class="row">
-  <div>
-    <h2>Create Visitor: </h2>
-    Name: <input type="text" id="title">
-    <input type="button" value="Submit">
-  </div>
+<div>Select Visitor
+  <div class="row">
+    <div class="leftcolumn" >
+      <select (change)="sendVisitor()" [(ngModel)] = "visitor">
+        <option value="">-- Select Visitor --</option>
+        <option *ngFor="let item of visitorList;" [value]="item.id"> {{item.name}} </option>
+      </select>
+    </div>
+  </div>  
 </div>

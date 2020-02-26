@@ -12,7 +12,6 @@ import { Visitor } from "../../model/visitor";
 
 export class HomepageComponent implements OnInit {
   constructor(private postService: PostService) {
-    
   }
   logginRequired=false;
   visitor:Visitor;
@@ -21,7 +20,7 @@ export class HomepageComponent implements OnInit {
 
   }
 
-  recieveVistor($event:Visitor){
+  recieveVisitor($event:Visitor){
     this.visitor=$event;
     this.logginRequired=false;
   }

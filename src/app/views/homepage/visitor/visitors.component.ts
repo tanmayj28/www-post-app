@@ -8,16 +8,23 @@ import { Visitor } from '../../../model/visitor'
 })
 
 export class VisitorsComponent implements OnInit {
-  visitor:Visitor
-  public visitorList: Visitor[] = [];
+  public visitor: Visitor = new Visitor();
+  public visitorList: Array<Visitor> = [];
+  public selected: Visitor;
+
   constructor(private visitorService: VisitorService) {
   }
   @Output() messageEvent = new EventEmitter<Visitor>();
 
   ngOnInit(): void {
+    this.getVisitors();
+  }
+
+  getVisitors() {
+    this.visitorList = [];
     this.visitorService.getVisitors().subscribe(
 			response => {
-        console.log(response);
+    console.log(response);
 				for (const item of response) {
 					this.visitorList.push(item);
 				}
@@ -26,6 +33,15 @@ export class VisitorsComponent implements OnInit {
   }
 
   sendVisitor(){
-    this.messageEvent.emit(this.visitor)
+    this.messageEvent.emit(this.visitor);
+  }
+
+  createVisitor() {
+    this.visitorService.createVisitor(this.visitor).subscribe(
+      response => {
+        alert("succefully submitted");
+      }
+    );
+    this.getVisitors();
   }
 }

@@ -14,10 +14,14 @@ export class PostsComponent implements OnInit {
   public post:Post = new Post();
   constructor(private postService: PostService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
-  @Input() visitor:Visitor;
+  @Input() visitor: number;
   @Output() loginEvent =  new EventEmitter<boolean>();
 
   ngOnInit(): void {
+    this.getPosts();    
+  }
+
+  getPosts() {
     this.postService.getPosts().subscribe(
 			response => {
         console.log(response);
@@ -29,13 +33,16 @@ export class PostsComponent implements OnInit {
   }
 
   createPost() {
+    this.post['visitor_id'] = this.visitor;
+    console.log(this.post);
     this.postService.createPost(this.post).subscribe(
       response => {
         console.log(response);
+        alert("Succesfullt created Post!");
       }
     )
   }
   sendMessage() {
-    this.loginEvent.emit(this.visitor?true:false)
+    this.loginEvent.emit(this.visitor? true : false)
   }
 }

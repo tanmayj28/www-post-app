@@ -13,7 +13,7 @@ export class VisitorService {
   }
 
   getVisitors(): Observable<any> {
-		return this.http.get(this.apiBaseUrl + 'visitors');
+		return this.http.get(this.apiBaseUrl + 'visitors/');
   }
 
   getVisitor(visitorId: any): Observable<any> {

@@ -2,9 +2,12 @@
   <div class="leftcolumn">
     <li *ngFor="let item of postList; let i = index">
       <div class="card">
-        <h2>{{item.title}}</h2>
-        <h5>{{item.created_at | date: 'yyyy-MMM-dd'}}</h5>
-        <p>{{item.content}}</p>
+        <h2>Title: {{item.title || "N/A"}}</h2>
+        <h5>Created at: {{item.created_at | date: 'yyyy-MMM-dd'}}</h5>
+        <p>Content: {{item.content || "N/A"}}</p>
+        <p>Visitor Name: {{item.visitor_name || "N/A"}}</p>
+        <p>Upvotes: {{item.upvotes_count}}</p>
+        <br><br>
       </div>
     </li>
   </div>
