@@ -23,23 +23,29 @@ export class VisitorsComponent implements OnInit {
   getVisitors() {
     this.visitorList = [];
     this.visitorService.getVisitors().subscribe(
-			response => {
-    console.log(response);
-				for (const item of response) {
-					this.visitorList.push(item);
-				}
-			}
-		);
+      response => {
+        console.log(response);
+        for (const item of response) {
+          this.visitorList.push(item);
+        }
+      }
+    );
   }
 
-  sendVisitor(){
-    this.messageEvent.emit(this.visitor);
+  sendVisitor() {
+    this.visitorService.getVisitor(this.visitor).subscribe((response) => {
+      this.messageEvent.emit(response);
+    }, (error) => {
+      console.log(error);
+    });
+
   }
 
   createVisitor() {
     this.visitorService.createVisitor(this.visitor).subscribe(
       response => {
         alert("succefully submitted");
+        
       }
     );
     this.getVisitors();

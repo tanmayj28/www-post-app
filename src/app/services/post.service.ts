@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {environment} from './../../environments/environment';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from './../../environments/environment';
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root'
 })
 
 export class PostService {
@@ -14,14 +14,18 @@ export class PostService {
   }
 
   getPosts(): Observable<any> {
-		return this.http.get(this.apiBaseUrl + 'posts');
+    return this.http.get(this.apiBaseUrl + 'posts');
   }
 
   getPost(postId: any): Observable<any> {
-		return this.http.get(this.apiBaseUrl + 'posts/id=' + postId);
+    return this.http.get(this.apiBaseUrl + 'posts/id=' + postId);
   }
 
   createPost(postData: any): Observable<any> {
-		return this.http.post(this.apiBaseUrl + 'posts', postData);
-	}
+    return this.http.post(this.apiBaseUrl + 'posts', postData);
+  }
+
+  getVisitorPosts(visitorId: number): Observable<any> {
+    return this.http.get(this.apiBaseUrl + 'visitors/list_posts/' + visitorId);
+  }
 }

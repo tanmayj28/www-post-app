@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services';
 import { PostsComponent } from './post/posts.component';
-import { UpvotesComponent } from './upvote/upvotes.component';
 import { VisitorsComponent } from './visitor/visitors.component';
 import { Visitor } from "../../model/visitor";
 
@@ -13,21 +12,21 @@ import { Visitor } from "../../model/visitor";
 export class HomepageComponent implements OnInit {
   constructor(private postService: PostService) {
   }
-  logginRequired=false;
-  visitor:Visitor;
+  logginRequired = false;
+  visitor: Visitor;
 
   ngOnInit(): void {
 
   }
 
-  recieveVisitor($event:Visitor){
-    this.visitor=$event;
-    this.logginRequired=false;
+  recieveVisitor($event: Visitor) {
+    this.visitor = $event;
+    this.logginRequired = false;
   }
 
-  recieveLoginCheck($event){
-    if(!$event) {
-      this.logginRequired=true;
+  recieveLoginCheck($event) {
+    if (!$event) {
+      this.logginRequired = true;
     }
   }
 }

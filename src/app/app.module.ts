@@ -9,7 +9,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './views/homepage/homepage.component';
 import { PostsComponent } from './views/homepage/post/posts.component';
-import { UpvotesComponent } from './views/homepage/upvote/upvotes.component';
+import { UpvotesComponent } from './views/homepage/post/upvote/upvotes.component';
 import { VisitorsComponent } from './views/homepage/visitor/visitors.component';
 import { FormsModule } from '@angular/forms';
 

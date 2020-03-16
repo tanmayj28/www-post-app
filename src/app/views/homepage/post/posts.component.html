@@ -1,3 +1,11 @@
+<div *ngIf="visitor" class="row">
+  <div>
+    <h2>Create Posts: </h2>
+    Title: <input type="text" id="title" [(ngModel)]="post.title">
+    Content: <input type="text" id="content" [(ngModel)]="post.content">
+    <input type="button" value="Submit" (click)="createPost()">
+  </div>
+</div>
 <div class="row">
   <div class="leftcolumn">
     <li *ngFor="let item of postList; let i = index">
@@ -7,17 +15,11 @@
         <p>Content: {{item.content || "N/A"}}</p>
         <p>Visitor Name: {{item.visitor_name || "N/A"}}</p>
         <p>Upvotes: {{item.upvotes_count}}</p>
+        <div class="card"><Upvote [visitor]="visitor?visitor.id:null" [post]="item" [disabled]="toggleUpvote(item)" (voted)="onVoted($event)"> </Upvote></div>
         <br><br>
       </div>
     </li>
   </div>
 </div>
 
-<div *ngIf="visitor" class="row">
-  <div>
-    <h2>Create Posts: </h2>
-    Title: <input type="text" id="title" [(ngModel)]="post.title">
-    Content: <input type="text" id="content" [(ngModel)]="post.content">
-    <input type="button" value="Submit" (click)="createPost()">
-  </div>
-</div>
+

@@ -17,10 +17,11 @@ export class VisitorService {
   }
 
   getVisitor(visitorId: any): Observable<any> {
-		return this.http.get(this.apiBaseUrl + 'visitors/id=' + visitorId);
+		return this.http.get(this.apiBaseUrl + 'visitors/' + visitorId);
   }
 
   createVisitor(visitorData: any): Observable<any> {
 		return this.http.post(this.apiBaseUrl + 'visitors', visitorData);
-	}
+  }
+
 }
